@@ -119,20 +119,19 @@ export default {
         width: 100%;
         margin-bottom: 20px;
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 100%;
         justify-items: stretch;
         align-items: stretch;
         .btn {
             font-size: 15pt;
             font-weight: 400;
-            display: flex;
             color: rgb(107, 105, 105);
             letter-spacing: -.9px;
-            background: rgb(229, 229, 229);
-            height: 170px;
-            margin: 5px;
             padding: 20px;
-            border-radius: 5px;
+            border-bottom: 2px solid rgb(247,247,247);
+        }
+        .btn:last-child {
+            border: 0;
         }
         .btn-other {
             background: rgb(243, 237, 237);
