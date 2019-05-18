@@ -27,7 +27,8 @@ export default {
 .loginBtn {
     a {
         display: block;
-        
+        font-size: 18px;
+        text-align: center;
     }
 }
 </style>
