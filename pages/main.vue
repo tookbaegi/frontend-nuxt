@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <div class="card margin20">
+            <div class="card margin20" @click="$router.push({'path': 'quest/see'})">
                 <div class="contents">
                     <div class="title1">유저들이 만든</div>
                     <div class="title2">퀘스트 보러가기</div>
