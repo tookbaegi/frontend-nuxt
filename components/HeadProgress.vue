@@ -14,3 +14,15 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+.title-bar {
+    width: 90px;
+    height: 3px;
+    background: rgb(177, 177, 177);
+    .title-bar-progress {
+        height: 100%;
+        background: #000;
+    }
+}
+</style>
