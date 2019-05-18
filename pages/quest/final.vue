@@ -92,7 +92,6 @@ export default {
             padding: 20px;
             font-size: 20px;
             letter-spacing: -1px;
-            color: rgb(194, 194, 194);
             width: 100%;
             height: 172px;
         }

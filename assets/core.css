@@ -3642,3 +3642,7 @@ body {
     transition: none !important;
   }
 }
+
+form, input, textarea {
+  outline: none;
+}
