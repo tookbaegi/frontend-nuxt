@@ -12,6 +12,7 @@
 import firebase from 'firebase'
 import axios from 'axios'
 var provider
+var vm = this
 
 export default {
     created () {
@@ -31,7 +32,7 @@ export default {
     },
     methods: {
         fbsign () {
-            provider = new firebase.auth.FacebookAuthProvider();
+             provider = new firebase.auth.FacebookAuthProvider();
             this.auth()
         },
         ggsign () {
@@ -52,7 +53,13 @@ export default {
             axios.post('https://ttukbaegi.herokuapp.com/api/users', body)
             .then((response) => {
                     console.log('회원가입', response)
-                    this.$router.push({'name': 'nickname'})
+                    window.localStorage.setItem('user', JSON.stringify(response.data.user))
+                    if(response.data.new){
+                        window.$nuxt.$router.push({'path': 'main'})
+                    }
+                    else{
+                        window.$nuxt.$router.push({'name': 'main'})
+                    }
                 })
             })
             .catch(function(error) {
