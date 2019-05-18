@@ -1,6 +1,6 @@
 <template>
     <div class="title-bar">
-        <div class="title-bar-progress" v-bind:style="{ width: progressPer }"></div>
+        <div class="title-bar-progress" v-bind:style="{ width: progressPer + '%' }"></div>
     </div>
 </template>
 

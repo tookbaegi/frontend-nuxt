@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <div class="title">
+        <HeadProgress per=30 />
         <h1>그 사람은 누구인가요?</h1>
     </div>
   </div>
