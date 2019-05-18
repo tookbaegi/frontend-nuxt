@@ -5,7 +5,9 @@
         <h1>그 사람은 누구인가요?</h1>
     </div>
     <section class="btns">
-        
+        <a href="#" class="btn">
+            대중교통
+        </a>
     </section>
   </div>
 </template>
@@ -36,7 +38,14 @@ export default {
     .btns {
         width: 100%;
         .btn {
-            
+            width: 50%;
+            float: left;
+            font-size: 18pt;
+            text-align: center;
+            font-weight: 600;
+            color: rgb(107, 105, 105);
+            letter-spacing: -.9px;
+            padding: 73px 50px;
         }
     }
 }
