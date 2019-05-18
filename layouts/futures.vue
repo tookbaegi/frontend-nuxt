@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="padding: 20px;">
       <nav>
           <a href="#" class="menu-icon">
               <img src="~assets/bar.svg">
@@ -20,8 +20,12 @@ body {
   font-family: 'Spoqa Han Sans', sans-serif;
 }
 nav {
-    margin-top: 56px;
+    margin-top: 24px;
     margin-bottom: 24px;
     height: 27.5px;
+    img {
+        height: 100%;
+        float: right;
+    }
 }
 </style>
