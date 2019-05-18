@@ -1,5 +1,8 @@
 <template>
     <div>
+        <!--
+            사이드바 테스트 페이지, 실서비스에서는 삭제 요망
+            -->
         <button @click="show = !show">
             Toggle render
         </button>
