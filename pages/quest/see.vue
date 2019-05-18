@@ -18,12 +18,26 @@
 
                 <div class="cardMid">
                     <div class="commentTitle">
-                        댓글({{item.comments.length}})
+                        댓글 ({{item.comments.length}})
                     </div>
                     <div class="commentItem">
-                        <div class="commentContent">
-
-                        </div>
+                        <template v-for="(sub, idx) in item.comments">
+                            <div class="commentContent"  :key="idx" v-if="idx < 2">
+                                <div class="userImage">
+                                    {{ sub.user.titleName }} 
+                                </div>
+                                <div class="commentContainer">
+                                    <div style="height: 8px;">
+                                        <div class="commentUsername">{{sub.user.name}}</div>
+                                        <div class="commentDay"> {{ getDate(sub.user.createdAt) }}</div>
+                                    </div>
+                                    <div class="commentReal">
+                                        {{ sub.content }}
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                            </div>                            
+                        </template>
                     </div>
                 </div>
 
@@ -51,17 +65,27 @@ export default {
         this.getData()
     },
     methods: {
+        getDate ( val ){
+            let date = new Date(val)
+            let result = `${date.getFullYear()}.${date.getMonth()+1}.${date.getDate()}`
+            return result
+        },
         sendComment (item) {
-            let body = {
-                content: item.userComment,
-                questId: item.id,
-                userId: this.user.id                
+            if(item.userComment !== ''){
+                let body = {
+                    content: item.userComment,
+                    questId: item.id,
+                    userId: this.user.id                
+                }
+                item.userComment = ''
+                axios.post('https://ttukbaegi.herokuapp.com/api/comments', body)
+                .then((response) => {
+                    this.getData()
+                })
             }
-            item.userComment = ''
-            axios.post('https://ttukbaegi.herokuapp.com/api/comments', body)
-            .then((response) =>{
-                console.log(response)
-            })
+            else{
+            }
+
         },
         getData() {
             axios.get('https://ttukbaegi.herokuapp.com/api/quests')
@@ -69,6 +93,11 @@ export default {
                 console.log(response)
                 for(let item of response.data){
                     item.userComment = ''
+                    for(let sub of item.comments){
+                        if(sub.user.name.length > 0 ){
+                            sub.user.titleName = sub.user.name.slice(0, 1)
+                        }
+                    }
                 }
                 this.list = response.data
             })
@@ -102,9 +131,9 @@ export default {
     }
     .card {
         padding: 10px;
-        background-color: rgb( 229, 229, 229);
         border-radius: 5px;
         margin-bottom: 20px;
+        background-color: black;
     }
 
     .cardHead {
@@ -133,11 +162,10 @@ export default {
         height: 30px;
         line-height: 30px;
         font-size: 9px;
+        color: white;
     }
 
     .commentItem {
-        border-top: 1px solid rgb(138, 137, 137);
-        padding-top: 11px;
     }
 
     .commentWrite {
@@ -158,6 +186,53 @@ export default {
         position: absolute;
         top: 14px;
         right: 14px;
+    }
+    .commentContent {
+        padding-top: 13px;
+        padding-bottom: 13px;
+        border-top: 1px solid white;
+    }
+    .userImage {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: rgb(93, 93, 93);
+        color: white;
+        text-align: center;
+        line-height: 25px;
+        float: left;
+    }
+
+    .commentContainer{
+        float: left;
+        width: calc(100% - 35px);
+    }
+
+    .commentUsername {
+        font-size: 8px;
+        height: 8px;
+        line-height: 8px;
+        float: left;
+        margin-left: 8px;
+        color: white;
+    }
+
+    .commentDay {
+        font-size: 6px;
+        height: 8px;
+        line-height: 8px;
+        color: rgb(179, 179, 179);
+        float: left;
+        margin-left: 4px;
+    }
+
+    .commentReal {
+        line-height: 12px;
+        margin-top: 9px;
+        margin-left: 8px;
+        font-size: 8px;
+        color: white;
+        width:  calc(100% -  33px);
     }
 
 </style>

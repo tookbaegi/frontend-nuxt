@@ -1,9 +1,13 @@
 <template>
     <div class="login">
-        <h1>뚝배기대신퀘스트</h1>
+        <div class="title">
+            <div class="word">뚝배기</div>
+            <div class="word">대신</div>
+            <div class="word">퀘스트</div>
+        </div>
         <div class="loginBtn">
-            <a href="#" style="margin-top: 260px;" @click="ggsign">구글로 연동하기</a>
-            <a href="#" @click="fbsign">페이스북으로 연동하기</a>
+            <a class="ggsign" @click="ggsign">Google 로 로그인</a>
+            <a class="fbsign" href="#" @click="fbsign">Facebook 으로 로그인</a>
         </div>
     </div>
 </template>
@@ -70,29 +74,46 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+  .title {
+    margin-top: 89px;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:30px;
+    font-weight: 500;
+  }
+  .word {
+    font-size: 40px;
+    font-weight:900;
+    line-height: 55px;
+    color: rgb(42, 42, 42);
+  }
 .login {
-    padding: 37px;
-    h1 {
-        font-size: 30px;
-        text-align: center;
-        letter-spacing: -1.5px;
-        margin-top: 130px;
-    }
+    width: calc(100% - 70px);
+    margin-left:auto;
+    margin-right: auto;
     .loginBtn {
+        margin-top: 194px;
         a {
-            color: #000;
+            color: white;
             display: block;
             background: rgb(229,229,229);
             font-size: 18px;
             text-align: center;
             border-radius: 5px;
-            padding: 23px 0;
+            padding: 17px 0;
             letter-spacing: -.9px;
             
             text-decoration: none;
             margin-bottom: 10pt;
         }
+        .ggsign {
+           background-color: rgb(242, 61, 6);
+        }
+        .fbsign {
+            background-color: rgb(61, 72, 154);
+        }
     }
 }
+
 </style>

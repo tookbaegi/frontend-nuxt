@@ -3,7 +3,7 @@
         <div class="header">
       <nav>
           <a href="#" class="menu-icon">
-              <img src="~assets/bar.svg">
+              <img src="~assets/black_hamburger.svg">
           </a>
       </nav>
         </div>
@@ -18,14 +18,14 @@
         </div>
 
         <div class="mid">
-            <div class="card" @click="$router.push({'path': 'quest/first'})">
+            <div class="card first" @click="$router.push({'path': 'quest/first'})">
                 <div class="contents">
                     <div class="title1">짜증나는 상황 발생!</div>
                     <div class="title2">퀘스트 만들기</div>
                 </div>
             </div>
 
-            <div class="card margin20" @click="$router.push({'path': 'quest/see'})">
+            <div class="card margin20 second" @click="$router.push({'path': 'quest/see'})">
                 <div class="contents">
                     <div class="title1">유저들이 만든</div>
                     <div class="title2">퀘스트 보러가기</div>
@@ -50,7 +50,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .wrapper{
         width: calc(100% - 34px);
         margin-left:auto;
@@ -72,7 +72,7 @@ export default {
         width:auto;
         height: 20px;
         line-height: 20px;
-        color: rgb(138, 137, 137);
+        color: rgb(30, 30, 30);
         font-size: 20px;
     }
     
@@ -81,8 +81,9 @@ export default {
         width:auto;
         height: 20px;
         line-height: 20px;
-        color: rgb(138, 137, 137);
+        color: rgb(30, 30, 30);
         font-size: 30px;
+        font-weight: 500;
     }
 
     .mid {
@@ -95,31 +96,52 @@ export default {
         height: 183px;
         border-radius: 5px;
         background-color: rgb(229, 229, 229);
-        padding-top:60px;
+        padding-top:50px;
     }
-
+    .first {
+        background-color: rgb(34, 220, 227);
+        .title1 {
+            text-align: center;
+            color: rgb(30, 30, 30);
+            font-size: 18px;
+        }
+        .title2 {
+            text-align: center;
+            color: rgba(0, 0, 0, 0.72);
+            font-size: 36px;
+            font-weight: 900;
+        }        
+    }
+    .second {
+        background-color: rgb(30, 30, 30);
+        .title1 {
+            text-align: center;
+            color: rgb(189, 189, 189);
+            font-size: 18px;
+        }        
+        .title2 {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 36px;
+            font-weight: 900;
+        }        
+    }
     .margin20 {
         margin-top: 20px;
     }
 
-    .title1 {
-        text-align: center;
-        color: rgb(112, 112, 112);
-        font-size: 18px;
-    }
-    .title2 {
-        text-align: center;
-        color: rgba(0, 0, 0, 0.72);
-        font-size: 36px;
-        margin-top:14px;
-    }
+
+
     nav {
     margin-top: 24px;
     margin-bottom: 24px;
-    height: 27.5px;
+    height: 80px;
     img {
         height: 100%;
         float: right;
+    }
+    .second .contents .title1 {
+        color: rgb(189, 189, 189)
     }
 }
 </style>

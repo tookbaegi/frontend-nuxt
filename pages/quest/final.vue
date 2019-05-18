@@ -6,12 +6,12 @@
     </div>
     <div class="textarea-box">
         <h3>대중교통 - 투머치토커</h3>
-        <textarea rows=4 placeholder="필수입력 (최대 30자)"></textarea>
+        <textarea rows=4 placeholder="필수입력 (최대 30자)" v-model="message"></textarea>
         <div class="ta-btns">
-            <a href="#" class="ta-btn">
+            <a href="#" class="ta-btn" @click="prev">
                 이전으로
             </a>
-            <a href="#" class="ta-btn">
+            <a href="#" class="ta-btn" @click="next">
                 완료하기
             </a>
         </div>
@@ -34,8 +34,41 @@
 
 <script>
 import HeadProgress from '~/components/HeadProgress.vue'
+import axios from 'axios'
 
 export default {
+    created () {
+        this.user = JSON.parse(localStorage.getItem('user'));   
+        this.person = localStorage.getItem('person')
+        this.place = localStorage.getItem('place')     
+    },
+    methods: {
+        prev () {
+            this.$router.push({'path': 'second'})
+        },
+        next () {
+            window.localStorage.setItem('name', this.message);
+            let body = {
+                "userId": this.user.id,
+                "person": this.person,
+                "place": this.place,
+                "name": this.message,
+            } 
+            axios.post('https://ttukbaegi.herokuapp.com/api/quests', body)
+            .then((response) => {
+                console.log(response)
+                this.$router.push({'path': 'complete'})
+            })
+        }
+    },
+    data () {
+        return {
+            message: '',
+            user: {},
+            person: '',
+            place: ''
+        }
+    },
     asyncData() {
         const listData = [
             {
@@ -70,7 +103,7 @@ export default {
         h1 {
             margin-top: 19px;
             margin-bottom: 19px;
-            color: rgb(138, 137, 137);
+            color: rgb(30, 30, 30);
             font-weight: 600;
             font-size: 30px;
             letter-spacing: -1.5pt;
@@ -81,7 +114,7 @@ export default {
             font-size: 15px;
             font-weight: 400;
             letter-spacing: -0.75px;
-            color: rgb(128, 128, 128);
+            color: rgb(30, 30, 30);
         }
         textarea {
             margin-top: 10px;
@@ -101,11 +134,11 @@ export default {
             justify-items: stretch;
             align-items: stretch;
             .ta-btn {
-                background: rgba(229, 229, 229, 0.37);
+                background: rgb(30, 30, 30);
                 border-radius: 5px;
                 text-align: center;
                 font-size: 20px;
-                color: rgb(128, 128, 128);
+                color: white;
                 padding: 19px 0;
                 letter-spacing: -1px;
                 margin: 5px;

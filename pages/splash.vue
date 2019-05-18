@@ -1,6 +1,10 @@
 <template>
-  <div class="title">
-    뚝배기대신퀘스트
+  <div class="wrapper">
+    <div class="title">
+      <div class="word">뚝배기</div>
+      <div class="word">대신</div>
+      <div class="word">퀘스트</div>
+    </div>
   </div>
 </template>
 
@@ -20,14 +24,27 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  body {
+    background-color: rgb(34, 220, 227);
+  }
+  .wrapper {
+    background-color: rgb(34, 220, 227);
+    width: 100%;
+    height: 100%;
+  }
   .title {
     width: calc(100% - 80px);
+    margin-top: 110px;
     margin-left:auto;
     margin-right:auto;
-    text-align:center;
-    margin-top:280px;
     font-size:30px;
     font-weight: 500;
+  }
+  .word {
+    font-size: 40px;
+    font-weight:900;
+    line-height: 55px;
+    color: rgb(42, 42, 42);
   }
 </style>
