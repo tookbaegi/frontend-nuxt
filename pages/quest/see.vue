@@ -18,7 +18,7 @@
 
                 <div class="cardMid">
                     <div class="commentTitle">
-                        댓글()
+                        댓글({{item.comments.length}})
                     </div>
                     <div class="commentItem">
                         <div class="commentContent">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
 
-                <input type="text" class="commentWrite" placeholder="댓글 입력">
+                <input v-model="item.userComment" type="text" class="commentWrite" placeholder="댓글 입력" @keyup.enter="sendComment(item)">
             </div>
         </div>
 
@@ -42,17 +42,34 @@ export default {
         return {
             list: [],
             heartDeault: '~assets/heart.svg',
-            heartRed: '~assets/heart.red.svg'
+            heartRed: '~assets/heart.red.svg',
+            user: {}
         }
     },
     created () {
+        this.user = JSON.parse(localStorage.getItem('user'));
         this.getData()
     },
     methods: {
+        sendComment (item) {
+            let body = {
+                content: item.userComment,
+                questId: item.id,
+                userId: this.user.id                
+            }
+            item.userComment = ''
+            axios.post('https://ttukbaegi.herokuapp.com/api/comments', body)
+            .then((response) =>{
+                console.log(response)
+            })
+        },
         getData() {
             axios.get('https://ttukbaegi.herokuapp.com/api/quests')
             .then((response) => {
                 console.log(response)
+                for(let item of response.data){
+                    item.userComment = ''
+                }
                 this.list = response.data
             })
         }
