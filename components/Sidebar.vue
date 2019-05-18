@@ -12,9 +12,10 @@
             <div class="icons" style="display: block">
                <img src="~assets/settings.svg" style="width: 20px;height: 20px;margin-left: 5px;" />
             </div>
+            <div class="badge-box"><a href="#" class="badge">퀘스트 보관함</a></div>
         </section>
         <section class="quest-do">
-            <h1 style="font-size: 20px;letter-spacing:-1px;">진행중인 퀘스트 <a href="#" class="badge">더보기</a></h1>
+            <h1 style="font-size: 20px;letter-spacing:-1px;">진행중인 퀘스트 <a href="#" class="">더보기</a></h1>
             <div class="boxs">
                 <div class="box">
                     <h2>으악 이렇게 된 이상 9시 30분까지는 도착한다</h2>
@@ -24,7 +25,7 @@
             </div>
         </section>
         <section class="quest-do">
-            <h1 style="font-size: 20px;letter-spacing:-1px;font-weight: 400">최근 완료한 퀘스트</h1>
+            <h1 style="font-size: 20px;letter-spacing:-1px;font-weight: 400">최근 완료한 퀘스트 <a href="#" class="">더보기</a></h1>
             <div class="boxs">
                 <div class="box">
                     <h2>으악 이렇게 된 이상 9시 30분까지는 도착한다</h2>
@@ -85,20 +86,26 @@ export default {
         }
     }
 }
-.quest-do {
-    h1 {
-        color: rgb(254,254,254);
-    }
-    .badge {
+.badge {
         font-weight: 400;
-        float: right;
-        margin-top: 5.5px;
-        font-size: 9px;
+        margin-left: 40px;
+        font-size: 12px;
         letter-spacing: -.45px;
         padding: 4px 6.6px;
         border-radius: 5px;
         color: rgb(254,254,254);
         background: rgba(229,229,229, 0.3);
+    }
+.quest-do {
+    h1 {
+        color: rgb(254,254,254);
+        a {
+            font-size: 9pt;
+            letter-spacing: -.45px;
+            color: rgb(254,254,254);
+            float: right;
+            margin-top: 5.5px;
+        }
     }
     .boxs {
         .box {
