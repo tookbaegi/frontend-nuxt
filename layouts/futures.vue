@@ -1,7 +1,9 @@
 <template>
   <div>
       <nav>
-          <a href="#" class="menu-icon"></a>
+          <a href="#" class="menu-icon">
+              <img src="~assets/bar.svg">
+          </a>
       </nav>
     <nuxt />
   </div>
