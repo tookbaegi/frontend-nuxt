@@ -29,13 +29,14 @@ export default {
     background-color: rgb(34, 220, 227);
   }
   .wrapper {
+    padding-top: 110px;
     background-color: rgb(34, 220, 227);
     width: 100%;
     height: 100vh;
   }
   .title {
     width: calc(100% - 80px);
-    margin-top: 110px;
+    
     margin-left:auto;
     margin-right:auto;
     font-size:30px;
