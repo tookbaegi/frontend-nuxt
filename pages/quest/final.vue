@@ -5,7 +5,7 @@
         <h1>퀘스트명 입력</h1>
     </div>
     <div class="textarea-box">
-        <h3>대중교통 - 투머치토커</h3>
+        <h3>{{ place }} - {{ person }} </h3>
         <textarea rows=4 placeholder="필수입력 (최대 30자)" v-model="message"></textarea>
         <div class="ta-btns">
             <a href="#" class="ta-btn" @click="prev">
