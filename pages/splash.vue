@@ -31,7 +31,7 @@ export default {
   .wrapper {
     background-color: rgb(34, 220, 227);
     width: 100%;
-    height: 100%;
+    height: 100vh;
   }
   .title {
     width: calc(100% - 80px);
